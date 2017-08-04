@@ -1,0 +1,51 @@
+group 'abner'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+// 指定编译编译.java文件的jdk版本
+sourceCompatibility = 1.8
+
+// 确保class文件与targetCompatibility指定版本，或者更新的java虚拟机兼容
+targetCompatibility = 1.8
+
+//
+ext {
+    jvmVersion = "1.8"
+    springVersion = "4.3.10.RELEASE"
+    log4j2Version = "2.8.2"
+}
+
+repositories {
+    maven { url 'http://maven.springframework.org/release' }
+    maven { url 'http://maven.springframework.org/milestone' }
+    maven { url 'http://maven.springframework.org/snapshot' }
+    maven { url 'http://download.java.net/maven/2' }
+    mavenCentral()
+}
+
+
+dependencies {
+
+    // 添加单元测试
+    testCompile "junit:junit:4.12"
+
+    // spring
+    compile "org.springframework:spring-context:$springVersion"
+
+    // 数据连接池
+    compile "com.alibaba:druid:1.1.2"
+
+    // JSON处理器
+    compile "com.alibaba:fastjson:1.2.9"
+
+    // 日志
+    compile "org.apache.logging.log4j:log4j-api:$log4j2Version"
+    compile "org.apache.logging.log4j:log4j-core:$log4j2Version"
+    compile "org.apache.logging.log4j:log4j-1.2-api:$log4j2Version"
+    compile "org.apache.logging.log4j:log4j-web:$log4j2Version"
+}
+
+
+
