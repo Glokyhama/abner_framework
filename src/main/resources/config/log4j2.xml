@@ -5,7 +5,6 @@
     </Properties>
     <appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <!--<ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>-->
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
         </Console>
 
@@ -53,11 +52,8 @@
             <appender-ref ref="abner-warn"/>
             <appender-ref ref="abner-error"/>
         </logger>
-        <logger name="org.quartz" level="info">
-        </logger>
         <root level="debug">
             <appender-ref ref="Console"/>
         </root>
     </loggers>
-
 </configuration>

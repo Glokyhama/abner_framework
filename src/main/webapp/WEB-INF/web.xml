@@ -14,7 +14,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:/spring/spring-mvc-config.xml</param-value>
+            <param-value>classpath:/spring/spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -31,8 +31,17 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/spring/spring-core-config.xml</param-value>
+        <param-value>classpath:/spring/spring-core.xml</param-value>
     </context-param>
+
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>classpath:/config/log4j2.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
 
     <!-- 编码过滤器，解决中文乱码  -->
     <filter>
