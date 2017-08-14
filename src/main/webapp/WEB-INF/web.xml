@@ -4,13 +4,31 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-
+    <!-- 应用名称及描述 -->
     <display-name>abner</display-name>
     <description>Spring MVC web application</description>
 
-    <!-- For web context -->
+    <!-- Spring 配置 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/spring/spring-core.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <!-- log4j 系统日志-->
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>classpath:/config/log4j2.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+
+    <!-- Spring MVC 启动配置 -->
     <servlet>
-        <servlet-name>springmvc-dispatcher</servlet-name>
+        <servlet-name>appServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
@@ -18,30 +36,10 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>springmvc-dispatcher</servlet-name>
-        <url-pattern>*.action</url-pattern>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-    <!-- For root context -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/spring/spring-core.xml</param-value>
-    </context-param>
-
-    <context-param>
-        <param-name>log4jConfiguration</param-name>
-        <param-value>classpath:/config/log4j2.xml</param-value>
-    </context-param>
-
-    <listener>
-        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
-    </listener>
 
     <!-- 编码过滤器，解决中文乱码  -->
     <filter>
@@ -65,7 +63,4 @@
         <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>
 
-    <session-config>
-        <session-timeout>20</session-timeout>
-    </session-config>
 </web-app>
