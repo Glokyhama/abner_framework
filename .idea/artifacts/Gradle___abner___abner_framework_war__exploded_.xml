@@ -30,12 +30,12 @@
           <element id="library" level="project" name="Gradle: org.apache.logging.log4j:log4j-web:2.8.2" />
           <element id="library" level="project" name="Gradle: org.apache.logging.log4j:log4j-core:2.8.2" />
           <element id="library" level="project" name="Gradle: org.apache.logging.log4j:log4j-api:2.8.2" />
+          <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.43" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.10.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-beans:4.3.10.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.3.10.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.10.RELEASE" />
           <element id="library" level="project" name="Gradle: commons-logging:commons-logging:1.2" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.43/dee9103eec0d877f3a21c82d4d9e9f4fbd2d6e0a/mysql-connector-java-5.1.43.jar" />
         </element>
       </element>
     </root>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+    <Properties>
+        <Property name="logDir">${sys:catalina.home}/logs/abner</Property>
+    </Properties>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </Console>
+
+        <!-- abnerFile -->
+        <RollingFile name="abner-info" fileName="${logDir}/abner.log"
+                     filePattern="${logDir}/$${date:yyyy-MM}/%d{yyyy-MM-dd}.abner.info.log.gz">
+            <Filters>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss,SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="1024 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="abner-warn" fileName="${logDir}/abner-warn.log"
+                     filePattern="${logDir}/$${date:yyyy-MM}/abner.%d{yyyy-MM-dd}.warn.log.gz">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss,SSS} %-5level %l %C{36} %L %M - %m%xEx%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="1024 MB"/>
+            </Policies>
+        </RollingFile>
+        <RollingFile name="abner-error" fileName="${logDir}/abner-error.log"
+                     filePattern="${logDir}/$${date:yyyy-MM}/abner.%d{yyyy-MM-dd}.error.log.gz">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyyy.MM.dd HH:mm:ss,SSS} %-5level %l %C{36} %L %M - %m%xEx%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="1024 MB"/>
+            </Policies>
+        </RollingFile>
+
+    </appenders>
+    <loggers>
+        <logger name="abner" level="debug" additivity="false">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="abner-info"/>
+            <appender-ref ref="abner-warn"/>
+            <appender-ref ref="abner-error"/>
+        </logger>
+        <root level="debug">
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+</configuration>

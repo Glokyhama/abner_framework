@@ -19,10 +19,34 @@ targetCompatibility = 1.8
 
 //
 ext {
+
+    // java虚拟机版本
     jvmVersion = "1.8"
+
+    // spring的版本
     springVersion = "4.3.10.RELEASE"
+
+    // 日志版本
     log4j2Version = "2.8.2"
+
+    // 环境版本控制
+    cpEnv = System.properties['profile'] == null ? "dev" : System.properties['profile'];
 }
+
+// 根据环境参数配置不同环境的参数
+task initConfig(type: Copy) {
+
+    from("src/main/resources/config-${cpEnv}") {
+        include "*.properties"
+        include "*.xml"
+    }
+    into "src/main/resources/config"
+    exclude '**/*.bak'
+
+    includeEmptyDirs = false
+}
+
+compileJava.dependsOn(initConfig)
 
 repositories {
     maven { url 'http://maven.springframework.org/release' }
@@ -32,7 +56,6 @@ repositories {
     mavenCentral()
     jcenter()
 }
-
 
 dependencies {
 
@@ -64,5 +87,5 @@ dependencies {
     compile "mysql:mysql-connector-java:5.1.43"
 }
 
-
-
+// 编码
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
