@@ -85,6 +85,17 @@ dependencies {
     compile "org.apache.logging.log4j:log4j-web:$log4j2Version"
 
     compile "mysql:mysql-connector-java:5.1.43"
+
+    compile "org.apache.commons:commons-lang3:3.6"
+
+    compile "javax:javaee-api:7.0"
+
+    compile "commons-net:commons-net:3.6"
+
+    compile "com.caucho:hessian:4.0.38"
+
+    // lmbok 提供了简单的注解的形式来帮助我们简化消除一些必须有但显得很臃肿的 java 代码
+    compile "org.projectlombok:lombok:1.16.18"
 }
 
 // 编码
