@@ -1,14 +1,12 @@
-package com.abner.entity.core.po;
+package com.abner.entity.core.vo;
 
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-
 @Data
 @NoArgsConstructor
-public class UserAuth {
+public class UserAuthVo {
 
 
     private Long id;

@@ -1,6 +1,7 @@
 package com.abner.service.core.impl;
 
 import com.abner.dao.core.UserAuthDao;
+import com.abner.entity.core.po.UserAuth;
 import com.abner.service.core.CoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,11 @@ public class CoreServiceImpl implements CoreService {
 
     @Override
     public String login(String identifier, String identityType, String certificate) {
-        return null;
+
+        // 取得用户信息
+        UserAuth userAuth = userAuthDao.getUserAuthByIdentifier(identifier);
+
+        return userAuth.toString();
     }
 
     @Override

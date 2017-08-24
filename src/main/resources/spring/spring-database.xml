@@ -13,7 +13,7 @@
     <!-- 配置整合mybatis过程 -->
     <!-- 1.配置数据库相关参数properties的属性：${url} -->
     <!-- 使用数据库配置文件解耦 -->
-    <context:property-placeholder location="classpath:/config/jdbc.properties"/>
+    <context:property-placeholder location="classpath:config/jdbc.properties"/>
 
     <!-- 2.数据库连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -63,6 +63,8 @@
 
         <!-- 注入数据库连接池 -->
         <property name="dataSource" ref="dataSource"/>
+
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
     </bean>
 
     <!-- 4.配置事务管理器 -->

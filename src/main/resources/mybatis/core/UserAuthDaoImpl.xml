@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserAuth">
+
+    <resultMap id="userAuthMap" type="UserAuth">
+        <result column="uid" property="uid" jdbcType="VARCHAR"/>
+        <result column="identity_type" property="identityType" jdbcType="INTEGER"/>
+        <result column="identifier" property="identifier" jdbcType="VARCHAR"/>
+        <result column="certificate" property="certificate" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="INTEGER"/>
+        <result column="update_time" property="updateTime" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <sql id="baseColumnList">
+        uid, identity_type, identifier, certificate, create_time, update_time
+    </sql>
+
+    <select id="getUserAuthByIdentifier" resultMap="userAuthMap" parameterType="map">
+        SELECT
+        <include refid="baseColumnList"/>
+        FROM user_auth
+        WHERE identifier = #{identifier,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
