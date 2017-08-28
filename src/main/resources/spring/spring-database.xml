@@ -20,10 +20,10 @@
           init-method="init" destroy-method="close">
 
         <!-- 配置连接池属性 -->
-        <property name="driverClassName" value="${jdbc.core.master.driver}"/>
-        <property name="url" value="${jdbc.core.master.url}"/>
-        <property name="username" value="${jdbc.core.master.username}"/>
-        <property name="password" value="${jdbc.core.master.password}"/>
+        <property name="driverClassName" value="${jdbc.master.driver}"/>
+        <property name="url" value="${jdbc.master.url}"/>
+        <property name="username" value="${jdbc.master.username}"/>
+        <property name="password" value="${jdbc.master.password}"/>
 
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="1"/>
@@ -66,6 +66,9 @@
 
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
     </bean>
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
 
     <!-- 4.配置事务管理器 -->
     <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -76,9 +79,4 @@
 
     <!-- 配置基于注解的声明式事务 -->
     <tx:annotation-driven transaction-manager="txManager"/>
-
-
-    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg index="0" ref="sqlSessionFactory"/>
-    </bean>
 </beans>

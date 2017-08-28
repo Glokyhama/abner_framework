@@ -1,6 +1,7 @@
 package com.abner.dao.core.impl;
 
 import com.abner.dao.core.UserAuthDao;
+import com.abner.dao.impl.BaseDaoImpl;
 import com.abner.entity.core.po.UserAuth;
 import org.springframework.stereotype.Repository;
 
