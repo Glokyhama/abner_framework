@@ -15,23 +15,11 @@ public class CoreController {
     @Autowired
     private CoreService coreService;
 
-    @RequestMapping(value = "/hello", produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "/login/{identifier}", produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String hello() {
-        return "你好！hello";
-    }
+    public String login(@PathVariable(value = "identifier") String identifier, String identityType, String certificate) {
 
-    @RequestMapping(value = "/say/{msg}", produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public String say(@PathVariable(value = "msg") String msg) {
-        return "{\"msg\":\"you say:'" + msg + "'\"}";
-    }
+        return coreService.login(identifier, identityType, certificate);
 
-    @RequestMapping("login")
-    public String login(String identifier, String identityType, String certificate) {
-
-        coreService.login(identifier, identityType, certificate);
-
-        return "";
     }
 }

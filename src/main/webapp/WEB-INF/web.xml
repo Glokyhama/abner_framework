@@ -8,10 +8,15 @@
     <display-name>abner</display-name>
     <description>Spring MVC web application</description>
 
+    <!-- 欢迎页面 -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
     <!-- Spring 配置 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:/spring/spring-core.xml</param-value>
+        <param-value>classpath:/spring/spring-base.xml</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -68,9 +73,4 @@
         <filter-name>methodFilter</filter-name>
         <servlet-name>appServlet</servlet-name>
     </filter-mapping>
-
-    <welcome-file-list>
-        <welcome-file>/index.jsp</welcome-file>
-    </welcome-file-list>
-
 </web-app>

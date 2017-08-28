@@ -25,8 +25,8 @@ public class UserAuth {
     private String certificate;
 
     //绑定时间
-    private Timestamp createTime;
+    private Integer createTime;
 
     //更新绑定时间
-    private Timestamp updateTime;
+    private Integer updateTime;
 }
