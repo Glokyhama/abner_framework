@@ -4,7 +4,7 @@ use abner;
 create table if not exists  `user_base` (
   `user_id` varchar(32) not null comment '用户id',
   `user_role` tinyint(2) unsigned not null default '2' comment '2 正常用户 3 禁言用户 4 虚拟用户 5 运营',
-  `register_source` tinyint(4) unsigned not null default '0' comment '注册来源：1 手机号 2 邮箱 3 用户名 4 qq 5 微信 6 腾讯微博 7 新浪微博',
+  `register_source` tinyint(4) unsigned not null default '1' comment '注册来源：1 手机号 2 邮箱 3 用户名 4 qq 5 微信 6 腾讯微博 7 新浪微博',
   `user_name` varchar(32) not null default '' comment '用户账号，必须唯一',
   `nick_name` varchar(32) not null default '' comment '用户昵称',
   `gender` tinyint(1) unsigned not null default '0' comment '用户性别 0-female 1-male',
